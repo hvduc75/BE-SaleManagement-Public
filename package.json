@@ -1,0 +1,37 @@
+{
+  "name": "be_salemanagement",
+  "version": "1.0.0",
+  "description": "Sale Management",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/server.js"
+  },
+  "keywords": [
+    "Nodejs",
+    "Express"
+  ],
+  "author": "Hvd75",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "7.15.5",
+    "@babel/node": "7.25.0",
+    "@babel/preset-env": "7.25.0",
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "1.20.2",
+    "config": "^3.3.12",
+    "cookie-parser": "1.4.6",
+    "dateformat": "^5.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "8.5.1",
+    "moment": "2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "3.11.0",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.7",
+    "sequelize": "6.13.0",
+    "sequelize-cli": "6.3.0"
+  }
+}
