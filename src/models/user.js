@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
             User.hasMany(models.User_Product, {
                 foreignKey: 'userId',
             });
-            User.belongsTo(models.Group);
+            User.belongsTo(models.Group, {
+                foreignKey: 'groupId', 
+            });
             User.hasOne(models.Cart, {
                 foreignKey: 'userId',
             });
@@ -38,13 +40,18 @@ module.exports = (sequelize, DataTypes) => {
             birthDay: DataTypes.DATE,
             phone: DataTypes.STRING,
             avatar: DataTypes.BLOB('long'),
-            groupId: DataTypes.INTEGER,
+            groupId: {
+                type: DataTypes.INTEGER,
+                field: 'groupId', 
+            },
             refresh_token: DataTypes.STRING,
             refresh_expired: DataTypes.DATE,
         },
         {
             sequelize,
             modelName: 'User',
+            tableName: 'User', 
+            freezeTableName: true,
         },
     );
     return User;

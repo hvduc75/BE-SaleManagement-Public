@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
             Order.hasMany(models.Order_Product, {
                 foreignKey: 'orderId',
             });
-            Order.belongsTo(models.User),
+            Order.belongsTo(models.User, {
+                foreignKey: 'userId',
+            }),
                 Order.belongsTo(models.User_Infor, {
                     foreignKey: 'userInfoId',
                 });
@@ -27,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             delivery_date: DataTypes.DATE,
             order_status: DataTypes.INTEGER, // 0: Processing, 1: Shipping, 2: Delivered, 3: Canceled
             receive_date: DataTypes.DATE,
-            total_price: DataTypes.DECIMAL(15, 0),
+            total_price: { type: DataTypes.DECIMAL(15, 0), field: 'total_Price' },
             note: DataTypes.STRING,
             transactionID: DataTypes.STRING,
             payment_method: DataTypes.STRING,
@@ -40,6 +42,8 @@ module.exports = (sequelize, DataTypes) => {
         {
             sequelize,
             modelName: 'Order',
+            tableName: 'Order',
+            freezeTableName: true,
         },
     );
     return Order;

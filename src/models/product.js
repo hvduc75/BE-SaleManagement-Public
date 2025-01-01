@@ -36,7 +36,9 @@ module.exports = (sequelize, DataTypes) => {
             Product.hasMany(models.Order_Product, {
                 foreignKey: 'productId',
             });
-            Product.belongsTo(models.Category);
+            Product.belongsTo(models.Category, {
+                foreignKey: 'categoryId',
+            });
         }
     }
     Product.init(
@@ -54,6 +56,8 @@ module.exports = (sequelize, DataTypes) => {
         {
             sequelize,
             modelName: 'Product',
+            tableName: 'Product', 
+            freezeTableName: true,
         },
     );
     return Product;

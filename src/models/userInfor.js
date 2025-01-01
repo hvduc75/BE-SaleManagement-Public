@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User_Infor.belongsTo(models.User);
+      User_Infor.belongsTo(models.User, {
+        foreignKey: 'userId',
+    });
       User_Infor.hasMany(models.Order, {
         foreignKey: 'userInfoId',
       });
@@ -30,6 +32,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User_Infor",
+      tableName: 'user_infor',
+      freezeTableName: true,
     }
   );
   return User_Infor;

@@ -9,8 +9,12 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Product_Cart.belongsTo(models.Cart);
-            Product_Cart.belongsTo(models.Product);
+            Product_Cart.belongsTo(models.Cart, {
+                foreignKey: 'cartId',
+            });
+            Product_Cart.belongsTo(models.Product, {
+                foreignKey: 'productId'
+            });
         }
     }
     Product_Cart.init(
@@ -23,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         {
             sequelize,
             modelName: 'Product_Cart',
+            tableName: 'Product_Cart', 
+            freezeTableName: true,
         },
     );
     return Product_Cart;
